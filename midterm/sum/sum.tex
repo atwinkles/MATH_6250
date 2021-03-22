@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{gensymb}
+\usepackage{graphicx}
+%\usepackage{bbold}
+%\usepackage{url}
+%\usepackage{booktabs}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage{verbatim}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MATH 6250}
+\lhead{Alexander Winkles}
+\chead{\Large \textbf{Midterm Summary}}
+\cfoot{Page \thepage}
+
+\begin{document}
+
+Weiner's goal in his paper ``A Spherical Fabricius-Bjerre Formula With Applications to Closed Space Curves" 
+is to take Fabricius-Bjerre's classical result 
+\begin{equation}
+t-s = d + i
+\end{equation}
+or, for a closed curve C the difference between the number of exterior and interior double tangents is equal to 
+the number of double points and half the number of inflection points 
+and translate it for closed spherical curves.
+He does so by defining what these items would be in terms of spherical curves (curves on the surface of a sphere)
+and defining a new variable counting the antipodal points of a curve $\gamma$.
+By doing so, he proves the new theorem that
+\begin{equation}
+t - s = d - a + i,
+\end{equation}
+where a is the number of antipodal pairs of $\gamma$. 
+From here, he applies this theorem to space curves called $\alpha$, which leads to the formula
+\begin{equation}
+i = t - s - d + a
+\end{equation}
+where
+\begin{align*}
+2i &= \textrm{the number of vertices of $\alpha$}\\
+d &= \textrm{the number of pairs of direcetly parallel tangents of $\alpha$}\\
+a &= \textrm{the number of pairs of oppositely parallel tangents of $\alpha$}\\
+t &= \textrm{the number of pairs of concordant parallel osculating planes $\alpha$}\\
+s &= \textrm{the number of pairs of discordant parallel osculating planes of $\alpha$}
+\end{align*}
+Weiner concludes his paper with two corollaries dealing with generic non-degenerate closed space curvees with torsion.
+\newline
+
+\underline{Bonus Paragraph}\newline
+
+The main theorem of Weiner's paper is that which is described by Equation (2) in the above paragraph:
+\newtheorem{weiner}{Theorem}
+\begin{weiner}
+Let $\gamma: C \to S$ be a generic closed spherical curve; then
+\begin{equation*}
+t - s = d - a + i
+\end{equation*}
+\end{weiner}
+To do this, he defines terms similar to those in the original Fabricius-Bjerre theorem, with the addition of a term for the antipodal pairs of $\gamma$.
+He replaces the signed half-tangents with half-geodesics and considers the change in the number of points the signed geodesics have in comment with the spherical curve, denoted as $N(x)$.
+Likewise, he observes that $N(x)$ changes as $\gamma$ passes either point of an antipodal pair of $\gamma$. 
+This consideration adds the -a term in the new formula.
+
+
+\end{document}

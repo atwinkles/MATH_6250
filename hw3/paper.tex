@@ -1,0 +1,291 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{gensymb}
+\usepackage{graphicx}
+%\usepackage{bbold}
+%\usepackage{url}
+%\usepackage{booktabs}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage{verbatim}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MATH 6250}
+\lhead{Alexander Winkles}
+\chead{\Large \textbf{Homework 3}}
+\cfoot{Page \thepage}
+
+\begin{document}
+
+For a good portion of this homework, when work is not shown, \textit{Mathematica} was utilized.
+The code for it can be found at the end.
+
+\begin{enumerate}
+
+\item \textit{Section 1.2 Problem 1}\\
+
+\begin{enumerate}
+
+\item $\kappa = 1$
+
+\item $\kappa = \sqrt{\frac{1}{(1+s^2)^2}}$
+
+\item $\kappa = \frac{1}{2}\sqrt{\frac{1}{2-2s^2}}$
+
+\end{enumerate}
+
+\item \textit{Section 1.2 Problem 3}\\
+\newline
+For this portion, all results will be found in the \textit{Mathematica} code at the end due to the results being too painful to type in \LaTeX.
+
+\item \textit{Section 1.2 Problem 4}\\
+\newline
+We wish to show that $\kappa = \frac{|f''|}{(1+(f')^2)^{3/2}}$ for a plane curve.
+Begin by noting that $\kappa = \frac{||\alpha' \times \alpha''||}{||\alpha'||^3}$. 
+Also note that since $f(x)$ is a plane curve, $\tau = 0$.
+Let $\alpha(x) = (x, f(x), 0)$, where the z compoenent is zero because of a lack of torsion.
+Now, it can easily be shown that $\alpha'(x) = (1, f'(x), 0)$ and $\alpha''(x) = (0, f''(x), 0)$.
+Since the numerator of $\kappa = ||\alpha' \times \alpha''||$, we can find the cross product of the given function's first and second derivatives to be $|f''(x)|$.
+Likewise, it is known that $|\alpha'(x)| = (1 + (f'(x))^2)^{1/2}$.
+By cubing this, it is seen that $|\alpha'(x)|^3 = (1 + (f(x))^2)^{3/2}$. 
+
+$\therefore \kappa = \frac{||\alpha' \times \alpha''||}{||\alpha'||^3} = \frac{|f''|}{(1+(f')^2)^{3/2}}$
+\qed
+
+\item \textit{Section 1.2 Problem 11}\\
+\newline
+We wish to show that 
+\begin{equation*}
+\tau(s(t)) = \frac{\alpha' \cdot (\alpha'' \times \alpha''')}{|\alpha' \times \alpha''|^2}
+\end{equation*}
+To begin, note that the triple product may be rewritten to $\alpha''' \cdot (\alpha' \times \alpha'')$. 
+From class, we know that $(\alpha' \times \alpha'') = \kappa v^3 \mathbf{B}$.
+Likewise, $\alpha'' = v'\mathbf{T} + \kappa v^2 \mathbf{N}$.
+
+We begin by calculating $\frac{d}{dt}\alpha''(t)$.
+\begin{align*}
+\alpha''' &= v''\mathbf{T} + v'v^2\kappa \mathbf{N} + 2vv'\kappa \mathbf{N} + v^3\kappa' \mathbf{N} + v^3\kappa \mathbf{N}'\\ 
+&= v''\mathbf{T} + v'v^2\kappa \mathbf{N} + 2vv'\kappa \mathbf{N} + v^3\kappa' \mathbf{N} + v^3\kappa (\tau \mathbf{B} - \kappa \mathbf{T})\\
+&= v''\mathbf{T} + v'v^2\kappa \mathbf{N} + 2vv'\kappa \mathbf{N} + v^3\kappa' \mathbf{N} + v^3\kappa\tau \mathbf{B} - v^3\kappa^2 \mathbf{T}\\
+\end{align*}
+Now, note that $\mathbf{B} \cdot \mathbf{T}, \mathbf{B} \cdot \mathbf{N} = 0$ and $ \mathbf{B} \cdot \mathbf{B} = |\mathbf{B}|^2$.
+So, $\alpha''' \cdot (\alpha' \times \alpha'') = \alpha''' \cdot \kappa v^3 \mathbf{B}$.
+\newline
+$\implies \alpha''' \cdot (\alpha' \times \alpha'') = \tau\kappa v^3 \mathbf{B} \cdot v^3\kappa \mathbf{B} 
+= |\kappa v^3 \mathbf{B}|^2\tau$ because \textbf{B}, \textbf{T}, and \textbf{N} are orthogonal. 
+By dividing by $|\alpha' \times \alpha''|^2$, this becomes $\tau$!
+\begin{equation*}
+\therefore \frac{\alpha''' \cdot (\alpha' \times \alpha'')}{|\alpha' \times \alpha''|^2} = \tau
+\end{equation*}
+\qed
+
+\item \textit{Section 1.2 Problem 15}\\ % MAKE THIS BETTER \begin{enumerate} 
+
+\begin{enumerate}
+
+\item 
+
+Begin by assuming that $\beta = \alpha + \lambda\mathbf{T} + \eta\mathbf{N}$, where $\eta$ is an arbitrary variable.
+We wish to show that $\eta = \mu$.
+$\mu$ is defined as $|\beta - \alpha|$, as given in the problem.
+Rearrange the above equation and dot both sides by \textbf{N} to get
+\begin{equation*}
+(\beta-\alpha)\cdot\mathbf{N} = \lambda\mathbf{T}\mathbf{N} + \eta\mathbf{N}\mathbf{N}.
+\end{equation*}
+Note that $\mathbf{T}\cdot\mathbf{N} = 0$ and $\mathbf{N}\cdot\mathbf{N} = 1$.
+Thus, the above can be rewritten to $(\beta-\alpha)\cdot\mathbf{N} = \eta$. 
+By taking the absolute value of tboth sides, we can see that 
+\begin{equation*}
+|(\beta-\alpha)||\mathbf{N}| = |\beta - \alpha| = |\eta| = \eta.
+\end{equation*}
+Thus, $\eta = \mu$, so \textbf{N} has the coefficent $\mu$.
+
+Now, we must show that $\lambda = 0$.
+Because $\alpha(s)$ and $\beta(s)$ are parallel, it is true that $\beta' + \alpha' = 0$. 
+By moving $\alpha$ to the left side and taking the derivative of $\beta = \alpha + \lambda\mathbf{T} + \mu\mathbf{N}$, it can be seen that 
+\begin{equation*}
+\beta' - \alpha' = \lambda'\mathbf{T} + \lambda\kappa\mathbf{N} - \mu\kappa\mathbf{T}
+\end{equation*}
+By noting that $\beta' = T_{\beta}$ and that $\alpha = -\beta$, this can be rewritten to
+\begin{equation*}
+2\mathbf{T}_{\beta} = (\lambda' - \mu\kappa)\mathbf{T}_{\beta} + (\lambda\kappa)\mathbf{N}_{\beta}.
+\end{equation*}
+As can be seen by this equation, for it to be true, $\lambda = 0$. 
+Therefore, $\beta(s) = \alpha(s) + \mu\mathbf{N}_{\beta}$, and the chord $\mu$ is normal to the curve at both points by definiton of the vector \textbf{N}.
+\qed
+
+\item From part (a), we know that $\alpha' = -\beta'$.
+We want to show that $\frac{1}{\kappa_{\alpha}} + \frac{1}{\kappa_{\beta}} = \mu$.
+As proved above, $\beta = \alpha +\mu\mathbf{N}_{\alpha}$ and $\alpha = \beta + \mu\mathbf{N}_{\beta}$.
+Differentiating both sides gives:
+\begin{equation*}
+\begin{split}
+\mathbf{T}_{\beta} &= \mathbf{T}_{\alpha} + \mu(-\kappa_{\alpha}\mathbf{T}_{\alpha})\\
+-\mathbf{T}_{\alpha} &= \mathbf{T}_{\alpha} + \mu(-\kappa_{\alpha}\mathbf{T}_{\alpha})\\
+-2\mathbf{T}_{\alpha} &= -\mu\kappa_{\alpha}\mathbf{T}_{\alpha}\\
+\frac{1}{\kappa_{\alpha}} &= \frac{\mu}{2}
+\end{split}
+\qquad
+\begin{split}
+\mathbf{T}_{\alpha} &= \mathbf{T}_{\beta} + \mu(-\kappa_{\beta}\mathbf{T}_{\beta})\\
+-\mathbf{T}_{\beta} &= \mathbf{T}_{\beta} + \mu(-\kappa_{\beta}\mathbf{T}_{\beta})\\
+-2\mathbf{T}_{\beta} &= -\mu\kappa_{\beta}\mathbf{T}_{\beta}\\
+\frac{1}{\kappa_{\beta}} &= \frac{\mu}{2}
+\end{split}
+\end{equation*}
+Adding these equations gives $\frac{\mu}{2}+\frac{\mu}{2} = \frac{1}{\kappa_{\alpha}} + \frac{1}{\kappa_{\beta}} = \mu$.
+\qed
+
+\end{enumerate}
+
+\item \textit{Section 1.2 Problem 20}\\
+
+\begin{enumerate}
+
+\item Let $\alpha$ and $\beta$ have the same normal line.
+At t, $\beta(t)$ is some distance along the normal line from $\alpha(t)$. 
+This gives us that $\beta(s) = \alpha(s) +r(s)\mathbf{N}_{\alpha}$.
+We wish to show that $r(s)$ is a constant.
+Begin by differentiating to obtain
+\begin{align*}
+\mathbf{T}_{\beta} &= \mathbf{T}_{\alpha} + r'\mathbf{N}_{\alpha} - r\kappa\mathbf{T}_{\alpha} + r\tau\mathbf{B}_{\alpha}\\
+&= (1-r\kappa)\mathbf{T}_{\alpha} + r'\mathbf{N}_{\alpha} + r\tau\mathbf{B}_{\alpha}
+\end{align*}
+Since $\mathbf{N}_{\alpha}$ and $\mathbf{N}_{\beta}$ are on the same line, any vector orthogonal to one must be orthogonal to the other.
+Thus, we dot the above expression by $\mathbf{N}_{\alpha}$ to obtain
+\begin{equation*}
+\mathbf{T}_{\beta}\cdot\mathbf{N}_{\alpha} = (1-r\kappa)\mathbf{T}_{\alpha}\cdot\mathbf{N}_{\alpha} + r'\mathbf{N}_{\alpha}\cdot\mathbf{N}_{\alpha} + r\tau\mathbf{B}_{\alpha}\cdot\mathbf{N}_{\alpha}.
+\end{equation*}
+$\implies 0 = r'$, so thus r(s) is a constant.
+
+\begin{comment}
+\item We wish to show that the angle between $\mathbf{T}_{\alpha}$ and $\mathbf{T}_{\beta}$ are equal, with the two tangent vectors being unit.
+From the previous part, $\mathbf{T}_{\beta} = \mathbf{T}_{\alpha} - r\kappa_{\alpha}\mathbf{T}_{\alpha} + r\tau\mathbf{B}_{\alpha}$.
+Dot both sides of this equation with $\mathbf{T}_{\alpha}$ to obtain:
+\begin{equation*}
+\mathbf{T}_{\beta}\cdot\mathbf{T}_{\alpha} = 1 - r\kappa_{\alpha}.
+\end{equation*}
+Since we are taking a dot product, we can say that $1 - r\kappa_{\alpha} = |\mathbf{T}_{\beta}||\mathbf{T}_{\alpha}|\cos{\theta}$, where $\theta$ is the angle between the two tangent vectors.
+Thus, to show that $\theta$ is constant, we must show that $\kappa_{\alpha}$ is constant, since we already know r(s) is. 
+Differentiate the original relation between the tangents gives
+\begin{align*}
+\mathbf{T}'_{\beta} &= \mathbf{T}'_{\alpha} - r\kappa'_{\alpha}\mathbf{T}_{\alpha} -r\kappa_{\alpha}\kappa_{\alpha}\mathbf{N}_{\alpha} + r\tau'\mathbf{B}_{\alpha} + r\tau\mathbf{B}'_{\alpha}\\
+\kappa_{\beta}\mathbf{N}_{\beta} &= \kappa_{\alpha}\mathbf{N}_{\alpha} - r\kappa'_{\alpha}\mathbf{T}_{\alpha} - r\kappa_{\alpha}^2\mathbf{N}_{\alpha} + r\tau'_{\alpha}\mathbf{B}_{\alpha} - r\tau_{\alpha}^2\mathbf{N}_{\alpha}
+\end{align*}
+By taking the dot product of both sides with respect to $\mathbf{T}_{\alpha}$, it is seen that $0 = -r\kappa'_{\alpha}$, or that $\kappa_{\alpha}$ is a constant.
+Returning to our original dot product, we can now confidently say that $\theta = \cos^{-1}{(1-r\kappa_{\alpha})} = \textrm{constant}$.
+\end{comment}
+
+\item We wish to show that the angle between $\mathbf{T}_{\beta}$ and $\mathbf{T}_{\alpha}$ is constant.
+To do this, begin with the statement found in (a) to say $\beta = \alpha + r\mathbf{N}$, where $\beta$ is not necessarily arclength parametrized.
+By differentiating, we find $\beta' = \mathbf{T}_{\alpha} + r(-\kappa\mathbf{T}_{\alpha} + \tau\mathbf{B}_{\alpha})$ or
+\begin{equation*}
+v_{\beta}\mathbf{T}_{\beta} = (1-r\kappa_{\alpha})\mathbf{T}_{\alpha} + (r\tau_{\alpha})\mathbf{B}_{\alpha},
+\end{equation*}
+where $\mathbf{T}_{\beta}$ is the unit tangent for $\beta$. 
+By dividing through by $v_{\beta}$ we obtain
+\begin{equation*}
+\mathbf{T}_{\beta} = \frac{(1-r\kappa_{\alpha})}{v_{\beta}}\mathbf{T}_{\alpha} + \frac{(r\tau_{\alpha})}{v_{\beta}}\mathbf{B}_{\alpha}.
+\end{equation*}
+Now, replace the two fractions with $f$ and $g$, respectively.
+Then, by differentiation the following is obtained:
+\begin{equation*}
+v_{\beta}\kappa_{\beta}\mathbf{N}_{\beta} = f'\mathbf{T}_{\alpha} + f(\kappa_{\alpha}\mathbf{N}_{\alpha}) + g'\mathbf{B}_{\alpha} + g(-\tau_{\alpha}\mathbf{N}_{\alpha})
+\end{equation*}
+Notice that the left-hand side has no $\mathbf{T}_{\alpha}$ or $\mathbf{B}_{\alpha}$ terms, so therefore $f',g' = 0$. 
+
+To use this fact, we will now compute $\left<\mathbf{T}_{\beta},\mathbf{T}_{\alpha}\right>$.
+Using the first derivative found above, it is easy to see that 
+\begin{equation*}
+\mathbf{T}_{\beta}\cdot\mathbf{T}_{\alpha} = \frac{1 - r\kappa_{\alpha}}{v_{\beta}}.
+\end{equation*}
+Since the dot product can be defined as $|\mathbf{T}_{\beta}||\mathbf{T}_{\alpha}|\cos{\theta}$, where $|\mathbf{T}_{\beta}|,|\mathbf{T}_{\alpha}| = 1$, this becomes
+\begin{equation*}
+\begin{split}
+\frac{1 - r\kappa_{\alpha}}{v_{\beta}} = \cos{\theta}
+\end{split}
+\quad
+\textrm{or}
+\quad
+\begin{split}
+\cos^{-1}{\left(\frac{1 - r\kappa_{\alpha}}{v_{\beta}}\right)} = \theta
+\end{split}
+\end{equation*}
+But since, from above, $f' = 0$, we can say that $\theta$ is a constant. \qed
+
+\item From (b), we know that
+\begin{equation*}
+\begin{split}
+1 - r\kappa_{\alpha} = v_{\beta}C_1
+\end{split}
+\quad \textrm{and} \quad
+\begin{split}
+r\tau_{\alpha} = v_{\beta}C_2
+\end{split}
+\end{equation*}
+where $C_1,C_2$ are constants.
+By rearranging the second equation, we obtain $-\frac{C_1}{C_2}r\tau_{\alpha} = -v_{\beta}C_1$.
+When these two equations are added together, it results in 
+\begin{equation*}
+1 = r\kappa + c\tau
+\end{equation*}
+as desired. \qed
+
+\item Begin with the fact that $1 = r\kappa + c\tau$, which was found in (c).
+Taking this equation's derivative gives $0 = r\kappa'+c\tau'$, since r,c are constants their derivatives are zero.
+By dividing by the constant r, this becomes $0 = \kappa' + j\tau'$, where j is the new constant.
+From this, it is apparent that $\kappa = \tau + m$, where m is an arbitrary constant.
+Plugging this result back into the original equation gives $1 = r(\tau + m) + c\tau$. 
+Collecting terms, we find that 
+\begin{equation*}
+\frac{1-rm}{r+c} = \tau.
+\end{equation*}
+This proves that $\tau$ is a constant. 
+
+We will now use this fact to show that infinitely many $\beta$ result in a circular helix.
+Let $\beta_i = \alpha + r_i\mathbf{N}_{\alpha}$ and $\beta_j = \alpha + r_j\mathbf{N}_{\alpha}$.
+These are both Bertrand mates to $\alpha$. 
+Thus, it is true that $1 = r_i\kappa+c_i\tau$ and $1 = r_j\kappa+c_j\tau$.
+We can state that these are equivalent and rearrange them to show
+\begin{align*}
+r_i\kappa+c_i\tau &= r_j\kappa+c_j\tau\\
+(r_i-r_j)\kappa + (c_i-c_j)\tau &= 0\\
+(c_i-c_j)\tau &= (r_j-r_i)\kappa\\
+\implies \frac{\tau}{\kappa} &= \frac{r_j-r_i}{c_i-c_j}
+\end{align*}
+Therefore, since $\tau/\kappa$ is a constant, $\alpha$ is a generalized helix by Proposition 2.5 of the textbook.
+But from what was shown above, $\tau$ is a constant. 
+Thus, for $\tau/\kappa$ to be constant with $\tau$ already constant, $\kappa$ must also be constant.
+But a circular helix is defined as having constant $\tau$ and $\kappa$, so $\alpha$ must be a circular helix.
+\qed
+
+\end{enumerate}
+\clearpage
+\item \textit{Section 1.2 Problem 22}\\
+\newline
+Since $\alpha = c\displaystyle\int_a^t(\mathbf{Y}\times\mathbf{Y'})du$, we can say that $\alpha' = c(\mathbf{Y}\times\mathbf{Y'})$.
+Also $\alpha'' = c[(\mathbf{Y'}\times\mathbf{Y'})\times(\mathbf{Y}\times\mathbf{Y''})] = c(\mathbf{Y}\times\mathbf{Y''})$.
+Finally $\alpha''' = c[(\mathbf{Y'}\times\mathbf{Y''})\times(\mathbf{Y}\times\mathbf{Y'''})] = c(\mathbf{Y'}\times\mathbf{Y''})$, since $\mathbf{Y}$ is $\mathcal{C}^2$, $\mathbf{Y'''} = 0$.
+From Problem 11, we know that 
+\begin{equation*}
+\tau(s(t)) = \frac{\alpha' \cdot (\alpha'' \times \alpha''')}{|\alpha' \times \alpha''|^2}.
+\end{equation*}
+
+I was unable to complete this problem, but I believe that my setup is correct and will ultimately show that $\tau = \frac{1}{c}$.
+
+\end{enumerate}
+
+Work was collaborated on with Hollis Neel.
+
+\end{document}

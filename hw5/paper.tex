@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{gensymb}
+\usepackage{graphicx}
+%\usepackage{bbold}
+%\usepackage{url}
+%\usepackage{booktabs}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{adjustbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MATH 6250}
+\lhead{Alexander Winkles}
+\chead{\Large \textbf{Homework 5}}
+\cfoot{Page \thepage}
+
+\begin{document}
+
+``Thanks to G\"{o}dal's incompleteness theorems, everything you thought you knew about math is wrong.
+So basically, you're all getting a degree in lies.''\\
+-Random abstract algebra professor from the internet
+
+\begin{enumerate}
+
+\item \textit{Section 2.1 Problem 1}\\
+
+Let S be the unit sphere centered at 0 with a north pole N as (0,0,1).
+Likewise, let P be any point other than N on S and let P* be a point on the equator that intersects the line formed by connecting P and N, denoted by (u,v,0).
+Thus, we can describe P by a multiple of the line connecting N and P*, $(0,0,1)+\lambda(u,v,-1)$ since P* can be inside or outside of the sphere depending on which hemisphere P is on.
+This can be rewritten to be $(\lambda u, \lambda v, 1-\lambda)$. 
+Since S is a unit sphere, it must be true that $x^2+y^2+z^2=1$.
+By plugging our parametrization of P into this, we obtain
+\begin{equation*}
+(\lambda u)^2+(\lambda v)^2 + (1-\lambda)^2 = 1\\
+\end{equation*}
+By factoring and rearranging, this shows that 
+\begin{equation*}
+\lambda = \frac{2}{u^2+v^2+1}
+\end{equation*}
+By plugging this into the parametrization above, this gives
+\begin{equation*}
+P = \left(\frac{2u}{u^2+v^2+1},\frac{2v}{u^2+v^2+1},\frac{u^2+v^2-1}{u^2+v^2+1}\right),
+\end{equation*}
+as desired.\qed
+
+\item \textit{Section 2.1 Problem 2}\\
+
+Let $\alpha(t) = x(u(t),v(t))$, where $a \leq t \leq b$.
+From curve theory, we know that 
+\begin{equation*}
+length(\alpha(t)) = \displaystyle\int_a^b |\alpha'(t)|dt.
+\end{equation*}
+Since $\alpha$ and its derivative have regular parametrization, we can find $|\alpha'(t)| = \sqrt{(\alpha'(t))^2} = \sqrt{\alpha'*\alpha'} = \sqrt{I_p(\alpha',\alpha')}$.
+Thus, we can say
+\begin{equation*}
+length(\alpha(t)) = \displaystyle\int_a^b\sqrt{I_{\alpha(t)}(\alpha'(t),\alpha'(t))}dt,
+\end{equation*}
+as desired.
+Note that $\alpha'(t) = u'(t)x_u+v'(t)x_v$.
+Then, actually writing out $I_p(\alpha'(t),\alpha'(t))$, we find that 
+\begin{equation*}
+I_p(\alpha'(t),\alpha'(t)) = (u')^2x_u\cdot x_u + 2u'v'x_u\cdot x_v + (v')^2x_v \cdot x_v = E(u')^2 + 2Fu'v' + G(v')^2.
+\end{equation*}
+Finally, let $\alpha \subset M$ and $\alpha* \subset M*$, where M and M* are isometric surfaces.
+Since they are isometric, $I_p=I_p*$, and thus by the above formula $length(\alpha) = length(\alpha*)$. \qed
+
+\item \textit{Section 2.1 Problem 3}\\
+
+These problems were solved in \textit{Mathematica}.
+
+\item \textit{Section 2.1 Problem 5}\\
+
+Let all normal lines pass through the origin. 
+Thus, any position $x$ on the surface can be described by $x = a\vec{n}$, where $\vec{n}$ is the unit normal vector.
+By differentiating this equation, we obtain
+\begin{equation*}
+x_u = a_u\vec{n} + a\vec{n}_u \quad \textrm{and} \quad x_v = a_v\vec{n} + a\vec{n}_v.
+\end{equation*}
+Dotting these results with $\vec{n}$, it is easy to see that $a_u,a_v = 0$ and thus $a$ is a constant. 
+This means that $x$ can be described by unit normals facing different directions all multiplied by the same $a$.
+Since $a$ is a constant, the equation shows that every $x$ is $a$ away from the origin, implying that it is a (part of at least) sphere.\qed
+
+\item \textit{Section 2.1 Problem 8}\\
+
+For our parametrization to be conformal, the angels measured in the $uv$-plane must agree with the corresponding angles in $T_pM$ for all P. 
+More so, as mentioned in the text (and proven in another problem that was not assigned), this statement is equivalent to the conditions $E = G, F = 0$.
+Thus, it is sufficient to show these conditions are met. 
+Using \textit{Mathematica}, it is found that 
+\begin{equation*}
+E = G = \frac{4}{(1+u^2+v^2)^2} \quad \textrm{and} \quad F = 0.
+\end{equation*}
+as desired.
+Thus, the parametrization found in (1) is conformal.\qed
+
+\item \textit{Section 2.1 Problem 12}\\
+\begin{enumerate}
+
+\item Let $x(u,v) = \alpha(u) + v\beta(u)$.
+Then, $x_u = \alpha'(u) + v\beta'(u)$ and $x_v = \beta(u)$.
+Since M is a surface and thus every point has a neighborhood that is regularly parametrized, $x_u,x_v$ form a basis spanning a plane, and thus $x_u\cdot x_v=0$. 
+Doing this actual computation results in $0 = \alpha'(u)\cdot\beta'(u)$, as desired.
+
+\item 
+
+Since $\alpha',\beta,\beta'$ are linearly dependent, it must be true that $a\alpha' + b\beta + c\beta' = 0$.
+From before, we know that $\alpha'\cdot\beta = 0$. 
+By dotting the above equation with $\beta$, we find that $a\alpha'\cdot\beta + b|\beta| + c\beta\cdot\beta' = 0$, 
+but $\alpha\cdot\alpha,\beta\cdot\beta' = 0$, so $b|\beta| = 0$. 
+We know that $|\beta| = 1$ from the problem, so $b = 0$. 
+Thus $a\alpha' + c\beta' = 0$. 
+From the problem, $\alpha' \neq 0$, so we know that $a\alpha' = -c\beta'$, and thus $\beta' = -\frac{a}{c}\alpha' = \lambda\alpha'$ as desired.
+
+\begin{enumerate}
+
+\item Let $\lambda(u) = 0$.
+Then, $\beta' = 0$ by the above function.
+So, $x(u,v) = \alpha + v\beta$, where $\beta$ is constant.
+Furthermore, $\beta = 1$ since $|\beta| = 1$.
+Thus $x(u,v) = \alpha + v$, which is the book's definition for a cylinder.
+
+\item Let $\lambda$ be a nonzero constant. 
+Thus, $\beta' = \lambda\alpha'$.
+Further, $\beta = c\alpha$, where c is some constant resulting from the integration potentially altering $\lambda$.
+Them, $x(u,v) = \alpha +vc\alpha = (1+vc)\alpha$.
+Likewise, $x_u = (1+vc)\alpha'$ and $x_v = c\alpha$. 
+Crossing these, we find $x_u \times x_v = (1+vc)\alpha'\times c\alpha$ which is nonzero so long as $v\neq -c$.
+Thus, the cross product fails (=0) only at one point, which is the vertex, and the surface is a cone.
+
+\item Let $\lambda,\lambda' \neq 0$ anywhere on M.
+$\beta' = \lambda\alpha$ and $\beta= \eta\alpha$, where $\eta$ has all the integration junk.
+Then, $x_u = \alpha' + v\eta'\alpha + v\eta\alpha'$ and $x_v = \eta\alpha$.
+Therefore, $x_u \times x_v = \alpha' \times \eta\alpha$, which is away from the directrix, showing that M is a tangent developable.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item \textit{Section 2.1 Problem 13}\\
+
+\item \textit{Section 2.1 Problem 16}\\
+
+\item
+
+\begin{enumerate}
+
+\item Using \textit{Mathematica}, the surface area was computer to be $a\pi(2 + a\sinh(\frac{2}{a}))$.
+
+\item For $R_0>\sqrt{3}$, this is true based off the graph $f(t) = t\cosh{\frac{1}{t}}$.
+
+\end{enumerate}
+
+\item \textit{Section 2.1 Problem 17}\\
+
+In the question, it says to find a plane that is tangent to the torus twice.
+The only region where this is possible is the hole inside the torus, where a plane can be tangent to the opposite points of the inside circle.
+By tilting the plane at a certain angle, where it still holds true that it is tangent at two points, the plane can cut through the torus in such a way to produce two circles on the newly created surface, which is the third family of circles.
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{gensymb}
+\usepackage{graphicx}
+%\usepackage{bbold}
+%\usepackage{url}
+%\usepackage{booktabs}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{eucal}
+\usepackage{multicol}
+\usepackage{verbatim}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MATH 6250}
+\lhead{Alexander Winkles}
+\chead{\Large \textbf{Midterm}}
+\cfoot{Page \thepage}
+
+\begin{document}
+
+In Weiner's paper ``A Spherical Fabricius-Bjerre Formula with Applications to Closed Space Curves,'' he translates Fabricius-Bjerre's clasically result
+\begin{equation*}
+t - s = d +i
+\end{equation*}
+for closed plane curves to describe curves embedded on a unit sphere. 
+Originally, Fabricius-Bjerre derived his formula by defining interior and exterior double tangents (t and s), double points (d), and half inflection points (i)
+and observed the change in how many points of the curve C intersect the tangent of the curve at a given point as the point moved along the curve and more specifically
+through double points, inflection points, and double tangents.
+Weiner adapts this proof to spherical curves with the additional consideration of antipodal points, or points on the opposite sides of a sphere.
+Past this, the author applies his formula to closed curves in 3-space and develops ideals dealing with generic (to be defined) non-degenerate closed curves with torsion.
+
+To begin with, Weiner defines $\gamma: C \to S$ to be a $\mathcal{C}^3$ immersion of the circle C onto the unit sphere S, which is called a closed spherical curve.
+Let $\gamma'$ be the field of unit tangent vectors pointing in the direction $\gamma$ travels.
+In order to translate Fabricius-Bjerre's results to closed spherical curves, Weiner defined double points, antipodal pairs, inflection points, and double tangents for $\gamma$.
+In his paper, a point $P \in S$ is a double point of $\gamma$ if $\gamma^{-1}$(P) contains multiple inputs from the circle C. 
+This is visualized as a closed loop within the curve and is restricted to being generated from only two points from C for the sake of simplicity.
+More so, it is restricted so $\gamma'(x) \neq \pm \gamma'(y)$, where $x,y \in C$ are the points which map to the double point. 
+This restriction is imposed so that it is a genuine double point with different tangents, rather than a line that crosses itself (and would thus have an equal tangent up to a minus sign).
+Next, for $P \in S$, $\bar{P}$ is defined as P's antipode.
+Thus, ${P,\bar{P}}$ is an antipodal pair of points for $\gamma$ if $\exists x,y \in C$ such that $\gamma(x) = P$ and $\gamma(y) = \bar{P}$.
+It is assumed that each pair ${P,\bar{P}}$ is not a double point so no ``unique'' points are counted twice.
+Likewise, as before $\gamma'(x) \neq \pm \gamma'(y)$, to restrict them from being the same line. %WHAT HELP PLS
+
+
+\end{document}
